@@ -1,32 +1,32 @@
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Draggable from 'react-draggable';
+import  { useRef } from 'react';
 
-class Dragg extends React.Component {
 
-  eventLogger = (e: MouseEvent, data: Object) => {
-    console.log('Event: ', e);
-    console.log('Data: ', data);
+export default function Dragg() {
+  const videoRef = useRef(null);
+
+  const handleFullscreen = () => {
+    if (videoRef.current) {
+      videoRef.current.requestFullscreen();
+    }
   };
-
-  render() {
-    return (
-      <Draggable
-        axis="x"
-        handle=".handle"
-        defaultPosition={{x: 0, y: 0}}
-        position={null}
-        grid={[25, 25]}
-        scale={1}
-        onStart={this.handleStart}
-        onDrag={this.handleDrag}
-        onStop={this.handleStop}>
-        <div>
-          <div className="handle">Drag from here</div>
-          <div>This readme is really dragging on...</div>
-        </div>
-      </Draggable>
-    );
-  }
+  return (
+    <>
+      <div style={{ width: '100vw', height: '100vh' }}>
+      {/* <video
+        ref={videoRef}
+        style={{ width: '50%', height: '50%' }}
+        controls
+        autoPlay
+        playsInline
+        muted
+        src="https://www.youtube.com/embed/F2UUR1eeIjw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen onClick={handleFullscreen}
+      /> */}
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/F2UUR1eeIjw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen onClick={handleFullscreen}></iframe>
+    </div>
+    </>
+  )
 }
-export default Dragg;
+
+
