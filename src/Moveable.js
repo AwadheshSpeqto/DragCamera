@@ -1,49 +1,25 @@
-import React, { useState } from "react";
-import Draggable from "react-draggable";
-import { Resizable,ResizableBox } from "react-resizable";
-// import { ResizableBox } from "react-resizableBox";
+import React, { useState } from 'react';
+import Webcampopup from './component/PopupComponent';
 
-const Moveable = ({ width, height, handleResize, children }) => {
-  return (
-    
-    <Resizable
-      width={width}
-      height={height}
-      onResize={handleResize}
-      minConstraints={[100, 100]}
-    >
-      {children}
-    </Resizable>
-  );
-};
+const Moveable = () => {
+  const [showPopup, setShowPopup] = useState(false);
 
-const DraggableBox = ({ children }) => {
-  return (
-    <Draggable handle=".handle">
-      <div className="box handle">{children}</div>
-    </Draggable>
-  );
-};
+  const handlePopupToggle = () => {
+    setShowPopup(!showPopup);
+  };
 
-const DragAndResizeBox = () => {
-  const [width, setWidth] = useState(200);
-  const [height, setHeight] = useState(200);
-
-  const handleResize = (event, { size }) => {
-    setWidth(size.width);
-    setHeight(size.height);
+  const handleWebcamOff = () => {
+    // Code to handle turning off the webcam
+    // This could involve making API requests, updating state, or any other necessary logic
+    setShowPopup(false); // Close the popup after turning off the webcam
   };
 
   return (
-    <ResizableBox width={width} height={height} handleResize={handleResize}>
-      <DraggableBox>
-        <div>
-          <h2>Drag and Resize Box</h2>
-          <p>Drag the box around and resize it using the handle</p>
-        </div>
-      </DraggableBox>
-    </ResizableBox>
-    
+    <div>
+      <h1>Your App</h1>
+      <button onClick={handlePopupToggle}>Turn Off Webcam</button>
+      {showPopup && <Webcampopup onClose={handlePopupToggle} />}
+    </div>
   );
 };
 

@@ -15,7 +15,9 @@
     "react-resizable-box": "^2.1.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "react-webcam": "^7.0.1",
     "react-youtube": "^10.1.0",
+    "reactjs-popup": "^2.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
